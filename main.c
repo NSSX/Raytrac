@@ -31,30 +31,25 @@ int event_mlx(int keycode, t_env *e)
 
   if(!etat)
     etat = 3;
-  if(keycode == 53)
+  if(keycode == 65307)
        exit(1);
-
-  /*126
-124
-125
-123*/
-   if(keycode == 126)
+   if(keycode == 65362)
      {
        //       e->eye_dir.y += 5;
        e->v2 += 0.2;
      }
-  if(keycode == 124)
+  if(keycode == 65363)
     {
       //fleche droite;
       e->v += 0.2;
 //      e->eye_dir.x -= 5;    
     }
-  if(keycode == 125)
+  if(keycode == 65364)
     {
       e->v2 -= 0.2;
       // e->eye_dir.y -= 5;
     }
-  if(keycode == 123)
+  if(keycode == 65361)
     {
             e->v -= 0.2;
       //    e->eye_dir.x += 5;
@@ -65,27 +60,170 @@ int event_mlx(int keycode, t_env *e)
       //droite
     }
     if(keycode == 97)
-      e->v -= M_PI / 2;
+      {
+        e->v -= M_PI / 2;
+      }
+  if(keycode == 119)
+    { 
+      double val;
+      double a = cos(e->v);
+      double b = sin(e->v);
+      double val1 = a * 5;
+      double val2 = b * 5;
+      if(val1 > 5)
+	val1 = 5;
+      else if(val1 < -5)
+	val1 = -5;
+      if(val2 > 5)
+	val2 = 5;
+      else if(val2 < -5)
+	val2 = -5;
+      e->eye_pos.z -= val1;//a * 5;
+      e->eye_pos.x += val2;//b * 5;
+      printf("ZZZZ %f XXXXX %f\n", val1 ,val2);
 
-  if(keycode == 13)
-    {
-      e->eye_pos.z -= 5;
-      if(e->eye_pos.x > e->eye_dir.x)
+      /*      if(a < 0)
+	a = -a;
+      if(b < 0)
+	b = -b;
+      if(a>=b)
+	val = a;
+      else
+	val = b;
+      if(cos(e->v) >= 0 && sin(e->v) >= 0)
 	{
-	  e->eye_pos.x -= 5;
-	   e->eye_dir.x -= 2;
+	  printf("P  P\n");
+	  val = cos(e->v) - sin(e->v);
+	  if(val < 0)
+            val = -val;
+	  printf("VAL %f\n",val);
+	  printf("EYE_ZZZZ = %f\n",val * 5);    
+	  e->eye_pos.z -= val * 5;
+	  val = 1-val;
+	  printf("EYE_XXX = %f\n",val * 5);    
+	  e->eye_pos.x += val * 5;
 	}
-      else if(e->eye_pos.x < e->eye_dir.x)
+      else if(cos(e->v) < 0 && sin(e->v) >= 0)
 	{
-	  e->eye_pos.x += 5;
-	  e->eye_dir.x += 3;
+	  printf("N  P\n");
+	  val = cos(e->v) - sin(e->v);
+	  if(val < 0)
+	    val = -val;
+	  if(val > 1)
+	    val = 2 - val;
+          printf("VAL %f\n",val);
+          printf("EYE_ZZZZ = %f\n",val * 5);
+          e->eye_pos.x += val * 5;
+          val = 1-val;
+          printf("EYE_XXX = %f\n",val * 5);
+          e->eye_pos.z += val * 5;
 	}
-     }  
-  if(keycode == 1)
+      else if(cos(e->v) < 0 && sin(e->v) < 0)
+	{
+	  printf("N  N\n");
+	  val = cos(e->v) - sin(e->v);
+	  if(val < 0)
+            val = -val;
+          printf("VAL %f\n",val);
+          printf("EYE_ZZZZ = %f\n",val * 5);
+          e->eye_pos.x -= val * 5;
+          val = 1-val;
+          printf("EYE_XXX = %f\n",val * 5);
+          e->eye_pos.z += val * 5;
+	}
+      else if(cos(e->v) >= 0 && sin(e->v) < 0)
+	{
+	  printf("P  N\n");
+	  val = cos(e->v) - sin(e->v);
+	  if(val < 0)
+            val = -val;
+	  if(val > 1)
+	    val = 2 - val;
+          printf("VAL %f\n",val);
+          printf("EYE_ZZZZ = %f\n",val * 5);
+          e->eye_pos.z -= val * 5;
+          val = 1-val;
+          printf("EYE_XXX = %f\n",val * 5);
+          e->eye_pos.x -= val * 5;
+	  }*/
+    }  
+  if(keycode == 115)
     {     
-      e->eye_pos.z += 5;
+      double val;
+      double a = cos(e->v);
+      double b = sin(e->v);
+      double val1 = a * 5;
+      double val2 = b * 5;
+      if(val1 > 5)
+        val1 = 5;
+      else if(val1 < -5)
+        val1 = -5;
+      if(val2 > 5)
+        val2 = 5;
+      else if(val2 < -5)
+        val2 = -5;
+      e->eye_pos.z += val1;//a * 5;                                                                                  
+      e->eye_pos.x -= val2;//b * 5;                                                                                  
+      printf("ZZZZ %f XXXXX %f\n", val1 ,val2);
+
+
+       /*      if(a < 0)
+        a = -a;
+      if(b < 0)
+        b = -b;
+      if(a>=b)
+        val = a;
+      else
+        val = b;
+      if(cos(e->v) >= 0 && sin(e->v) >= 0)
+        {
+          val = cos(e->v) - sin(e->v);
+          printf("VAL %f\n",val);
+          printf("EYE_ZZZZ = %f\n",val * 5);
+          e->eye_pos.z += val * 5;
+          val = 1-val;
+          printf("EYE_XXX = %f\n",val * 5);
+          e->eye_pos.x -= val * 5;
+        }
+      else if(cos(e->v) < 0 && sin(e->v) >= 0)
+        {
+          val = cos(e->v) - sin(e->v);
+          if(val < 0)
+            val = -val;
+          if(val > 1)
+            val = 2 - val;
+          printf("ENCULLLLLER");
+          printf("VAL %f\n",val);
+          printf("EYE_ZZZZ = %f\n",val * 5);
+          e->eye_pos.z -= val * 5;
+          val = 1-val;
+          printf("EYE_XXX = %f\n",val * 5);
+          e->eye_pos.x -= val * 5;
+        }
+      else if(cos(e->v) < 0 && sin(e->v) < 0)
+        {
+          val = cos(e->v) - sin(e->v);
+          printf("VAL %f\n",val);
+          printf("EYE_ZZZZ = %f\n",val * 5);
+          e->eye_pos.x += val * 5;
+          val = 1-val;
+          printf("EYE_XXX = %f\n",val * 5);
+          e->eye_pos.z -= val * 5;
+        }
+      else if(cos(e->v) >= 0 && sin(e->v) < 0)
+        {
+          val = cos(e->v) - sin(e->v);
+          if(val > 1)
+            val = 2 - val;
+          printf("VAL %f\n",val);
+          printf("EYE_ZZZZ = %f\n",val * 5);
+          e->eye_pos.z += val * 5;
+          val = 1-val;
+          printf("EYE_XXX = %f\n",val * 5);
+          e->eye_pos.x += val * 5;
+	  }*/
     } 
-  if(keycode == 43)
+  if(keycode == 44)
     {
       t_obj   *obj;
 
@@ -99,7 +237,7 @@ int event_mlx(int keycode, t_env *e)
 	  obj = obj->next;
 	}
     }
-  if(keycode == 47)
+  if(keycode == 46)
     {
       t_obj   *obj;
 
@@ -113,7 +251,7 @@ int event_mlx(int keycode, t_env *e)
           obj = obj->next;
         }
     }
-  if(keycode == 44)
+  if(keycode == 39)
     {
       t_obj   *obj;
 
@@ -127,7 +265,7 @@ int event_mlx(int keycode, t_env *e)
           obj = obj->next;
         }
     }
-  if(keycode == 39)
+  if(keycode == 47)
     {
       t_obj   *obj;
 
@@ -149,30 +287,13 @@ int event_mlx(int keycode, t_env *e)
 	etat++;
       printf("%d\n",etat);
     }
-  printf("%d\n",keycode);
-  ray_tracer(e);
+  //  double val = cos(e->v) - sin(e->v);
+  //  printf("val FIN  %f\n",val);
+    printf("cos %f sin %f\n",cos(e->v),sin(e->v));
+ printf("\n----------------\n\n");
+ 
+ ray_tracer(e);
   return(1);
-}
-
-void ultimate_read(t_env *e)
-{
-  t_obj *tmp;
-  int i;
-
-  i = 1;
-  tmp = e->obj;
-  while(tmp)
-    {
-      printf("\n\n----- OBJET NUMERO %d -------\n\n",i);
-      printf("POS : (%f,%f,%f)\n",tmp->pos.x, tmp->pos.y,tmp->pos.z);
-      printf("COLOR : (%f,%f,%f)\n",tmp->color.x, tmp->color.y,tmp->color.z);
-      printf("ROTATION : (%f,%f,%f)\n",tmp->rot.x, tmp->rot.y,tmp->rot.z);
-      printf("TYPE : %d\n",tmp->type);
-      printf("SIZE : %f\n",tmp->size);
-      printf("----------------------");
-      i++;
-      tmp = tmp->next;
-    }
 }
 
 int main(int ac, char **av)
@@ -181,15 +302,15 @@ int main(int ac, char **av)
 
   give(&e);
   parsing(&e, ac, av[1]);
-  ultimate_read(&e);
   init_eye(&e);
   light_number(&e);
   pov(&e);
   e.v = 0;
   e.v2 = 0;
-  e.nl = 1 / e.nl;
-  e.mlx = mlx_init();
   e.win =  mlx_new_window(e.mlx, e.width, e.height, e.name);
+  e.nl = 1 / e.nl;
+  e.v = e.eye_dir.x * 0.2;
+  e.v2 = e.eye_dir.y * 0.2;
   mlx_expose_hook(e.win, expose_hook, &e);;
   mlx_key_hook(e.win, event_mlx, &e);
   mlx_loop(e.mlx);
